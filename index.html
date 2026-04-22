@@ -345,6 +345,35 @@
             margin-top: 20px;
         }
 
+        .exercise-input-group {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start; /* 🔥 prevents vertical stretching */
+            flex-wrap: wrap;
+        }
+
+        .exercise-input-group select,
+        .exercise-input-group input {
+            flex: 1 1 20px;
+            min-width: 120px;
+            height: 42px; /* 🔥 fixed consistent height */
+        }
+
+        .exercise-input-group .btn {
+            height: 42px; /* match inputs */
+        }
+
+        .exercise-input-group label {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 500px) {
+            .exercise-input-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
         .routine-table th {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             padding: 15px;
