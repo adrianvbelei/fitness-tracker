@@ -345,6 +345,41 @@
             margin-top: 20px;
         }
 
+        .routine-table th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            padding: 15px;
+            text-align: left;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            border: 2px solid var(--border);
+        }
+
+        .routine-table td {
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            background: var(--bg-dark);
+        }
+
+        .routine-table tr:hover td {
+            background: rgba(255, 69, 0, 0.1);
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 40px;
+            font-style: italic;
+        }
+
+        .actions-bar {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /*Exercise input*/
         .exercise-input-group {
             display: flex;
             gap: 10px;
@@ -381,38 +416,36 @@
             }
         }
 
-        .routine-table th {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            padding: 15px;
-            text-align: left;
-            font-family: 'Bebas Neue', cursive;
-            font-size: 1.1rem;
-            letter-spacing: 0.05em;
-            border: 2px solid var(--border);
+        /*set input*/
+        .set-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 1fr 60px;
+            gap: 10px;
+            align-items: center;
         }
 
-        .routine-table td {
-            padding: 12px 15px;
-            border: 2px solid var(--border);
-            background: var(--bg-dark);
+        .set-row input {
+            min-width: 100px;
+            gap: 12px;
         }
 
-        .routine-table tr:hover td {
-            background: rgba(255, 69, 0, 0.1);
-        }
+        @media (max-width: 500px) {
+            .set-row {
+                grid-template-columns: 1fr 1fr 1fr 1fr; /* 2 columns */
+                grid-template-areas:
+                    "label label"
+                    "reps weight";
+                width: 100%;
+            }
 
-        .empty-state {
-            text-align: center;
-            color: var(--text-muted);
-            padding: 40px;
-            font-style: italic;
-        }
 
-        .actions-bar {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 30px;
+
+            .set-row input {
+                width: 100%;     /* 🔥 fill grid cell */
+                min-width: 20px;    /* 🔥 allow shrinking */
+                box-sizing: border-box;
+            }
+
         }
 
         /* Scrollbar styling */
@@ -447,6 +480,19 @@
                 padding: 20px;
             }
         }
+
+        /* Chrome, Safari, Edge */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        
     </style>
 </head>
 <body>
