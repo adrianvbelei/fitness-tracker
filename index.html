@@ -207,7 +207,7 @@
         input[type="text"], input[type="number"], select {
             background: var(--bg-dark);
             border: 2px solid var(--border);
-            color: var(--text);
+            color: var(--text); 
             padding: 12px;
             border-radius: 6px;
             font-family: 'Roboto Mono', monospace;
@@ -570,68 +570,81 @@
             { id: 'back', name: 'BACK', icon: '🦾' },
             { id: 'shoulders', name: 'SHOULDERS', icon: '🏋️' },
             { id: 'legs', name: 'LEGS', icon: '🦵' },
-            { id: 'arms', name: 'ARMS', icon: '💪' },
-            { id: 'core', name: 'CORE', icon: '🔥' }
+            { id: 'triceps', name: 'TRICEPS', icon: '💪' },
+            { id: 'biceps', name: 'BICEPS', icon: '🔥' }
         ];
 
         const prebuiltExercises = {
-            chest: ["Bench Press", "Incline Dumbbell Press", "Chest Fly", "Push-ups", "Cable Crossover", "Decline Press"],
-            back: ["Pull-ups", "Deadlift", "Lat Pulldown", "Seated Row", "Barbell Row", "Face Pulls"],
-            shoulders: ["Overhead Press", "Lateral Raise", "Front Raise", "Reverse Fly", "Arnold Press", "Shrugs"],
-            legs: ["Squat", "Leg Press", "Lunges", "Leg Curl", "Leg Extension", "Calf Raises"],
-            arms: ["Bicep Curl", "Tricep Pushdown", "Hammer Curl", "Dips", "Skull Crushers", "Concentration Curl"],
-            core: ["Plank", "Crunches", "Leg Raises", "Russian Twists", "Ab Wheel", "Mountain Climbers"]
+            chest: ["Barbell Bench Press", "Incline Dumbbell Press", "Dumbell Bench Press", "Incline Barbell Press", "Peck deck"],
+            back: ["Rowing T", "Pullups", "Chest pull", "Unilateral Rowing with Dumbell", "Seated Cable Row"],
+            shoulders: ["Lateral raises with standing pulley", "Seated dumbbell lateral raises"],
+            legs: ["Squats with a Barbell", "HACK Squat", "Cuadriceps Extension", "Rumanian Dead Weight", "Leg Press", "Femoral Curl"],
+            biceps: ["Biceps Curl B Barbell", "Alternating Hammer Curl", "Biceps Curl with olympic bar"],
+            triceps: ["French press", "Triceps extension with triangular poley", "Unilateral triceps Extension"],
         };
 
         // Premade routines for each day
         const weeklyRoutines = {
             monday: {
-                name: "Chest & Triceps",
+                name: "Chest & Arms",
                 exercises: [
-                    { bodyPart: 'chest', name: 'Bench Press', sets: [{reps: 12, weight: 60, tags: ['warmup']}, {reps: 10, weight: 80}, {reps: 8, weight: 90}, {reps: 6, weight: 100}] },
-                    { bodyPart: 'chest', name: 'Incline Dumbbell Press', sets: [{reps: 10, weight: 30}, {reps: 10, weight: 35}, {reps: 8, weight: 40}] },
-                    { bodyPart: 'chest', name: 'Cable Crossover', sets: [{reps: 12, weight: 15}, {reps: 12, weight: 17.5}, {reps: 15, weight: 15, tags: ['dropset']}] },
-                    { bodyPart: 'arms', name: 'Tricep Pushdown', sets: [{reps: 12, weight: 25}, {reps: 10, weight: 30}, {reps: 12, weight: 25, tags: ['failure']}] }
+                    { bodyPart: 'chest', name: 'Barbell Bench Press', sets: [{reps: 6, weight: 0, tags: ['warmup']}, {reps: 8, weight: 0}, {reps: 8, weight: 0}] },
+                    { bodyPart: 'chest', name: 'Incline Dumbbell Press', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}] },
+                    { bodyPart: 'biceps', name: 'Biceps Curl B Barbell', sets: [{reps: 12, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0, tags: ['dropset']}] },
+                    { bodyPart: 'shoulders', name: "Lateral raises with standing pulley", sets: [{reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}] },
+                    { bodyPart: 'shoulders', name: "Seated dumbbell lateral raises", sets: [{reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0, tags: ["failure"]}] },
+                    { bodyPart: 'biceps', name: 'Alternating Hammer Curl', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0, tags: ['failure']}] },
+                    { bodyPart: 'chest', name: "Peck deck", sets: [{reps: 12, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0, tags: ['failure']}] }
                 ]
             },
             tuesday: {
-                name: "Back & Biceps",
+                name: "Back & Triceps",
                 exercises: [
-                    { bodyPart: 'back', name: 'Deadlift', sets: [{reps: 10, weight: 80, tags: ['warmup']}, {reps: 8, weight: 100}, {reps: 6, weight: 120}, {reps: 5, weight: 140}] },
-                    { bodyPart: 'back', name: 'Pull-ups', sets: [{reps: 10, weight: 0}, {reps: 8, weight: 0}, {reps: 6, weight: 10, tags: ['failure']}] },
-                    { bodyPart: 'back', name: 'Seated Row', sets: [{reps: 12, weight: 60}, {reps: 10, weight: 70}, {reps: 10, weight: 75}] },
-                    { bodyPart: 'arms', name: 'Bicep Curl', sets: [{reps: 12, weight: 15}, {reps: 10, weight: 17.5}, {reps: 8, weight: 20, tags: ['dropset']}] }
+                    { bodyPart: 'back', name: 'Rowing T', sets: [{reps: 6, weight: 0, tags: ['warmup']}, {reps: 8, weight: 0}, {reps: 8, weight: 0}] },
+                    { bodyPart: 'back', name: 'Pullups', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}] },
+                    { bodyPart: 'triceps', name: 'French press', sets: [{reps: 12, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0, tags: ['dropset']}] },
+                    { bodyPart: 'triceps', name: 'Triceps extension with triangular poley', sets: [{reps: 12, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0, tags: ['failure']}] },
+                    { bodyPart: 'back', name: 'Unilateral Rowing with Dumbell', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}] },
+                    { bodyPart: 'back', name: 'Seated Cable Row', sets: [{reps: 15, weight: 0}, {reps: 20, weight: 0}, {reps: 20, weight: 0, tags: ['failure']}] }
                 ]
             },
             wednesday: {
-                name: "Rest or Cardio",
-                exercises: []
+                name: "Legs & Shoulders",
+                exercises: [
+                    { bodyPart: 'legs', name: 'Squats with a Barbell', sets: [{reps: 6, weight: 0, tags: ['warmup']}, {reps: 8, weight: 0}, {reps: 8, weight: 0}] },
+                    { bodyPart: 'legs', name: 'HACK Squat', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}] },
+                    { bodyPart: 'legs', name: 'Femoral Curl', sets: [{reps: 15, weight: 0}, {reps: 20, weight: 0}, {reps: 20, weight: 0}, {reps: 20, weight: 0, tags: ['failure']}] },
+                    { bodyPart: 'legs', name: 'Cuadriceps Extension', sets: [{reps: 15, weight: 0}, {reps: 20, weight: 0}, {reps: 20, weight: 0}, {reps: 20, weight: 0, tags: ['failure']}] },
+                    { bodyPart: 'shoulders', name: "Lateral raises with standing pulley", sets: [{reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}] },
+                    { bodyPart: 'shoulders', name: "Seated dumbbell lateral raises", sets: [{reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0, tags: ["failure"]}] }                
+                ]
             },
             thursday: {
-                name: "Legs",
+                name: "Upper Body",
                 exercises: [
-                    { bodyPart: 'legs', name: 'Squat', sets: [{reps: 12, weight: 60, tags: ['warmup']}, {reps: 10, weight: 100}, {reps: 8, weight: 120}, {reps: 6, weight: 140}] },
-                    { bodyPart: 'legs', name: 'Leg Press', sets: [{reps: 15, weight: 150}, {reps: 12, weight: 180}, {reps: 10, weight: 200}] },
-                    { bodyPart: 'legs', name: 'Leg Curl', sets: [{reps: 12, weight: 40}, {reps: 12, weight: 45}, {reps: 15, weight: 40, tags: ['dropset']}] },
-                    { bodyPart: 'legs', name: 'Calf Raises', sets: [{reps: 20, weight: 60}, {reps: 20, weight: 70}, {reps: 25, weight: 60, tags: ['failure']}] }
+                    { bodyPart: 'chest', name: 'Dumbell Bench Press', sets: [{reps: 6, weight: 0, tags: ['warmup']}, {reps: 8, weight: 0}, {reps: 8, weight: 0}] },
+                    { bodyPart: 'back', name: 'Rowing T', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}] },
+                    { bodyPart: 'chest', name: 'Incline Barbell Press', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0, tags: ['dropset']}] },
+                    { bodyPart: 'back', name: 'Chest pull', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}] },
+                    { bodyPart: 'biceps', name: "Unilateral triceps Extension", sets: [{reps: 12, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0, tags: ["failure"]}] },
+                    { bodyPart: 'triceps', name: "Unilateral triceps Extension", sets: [{reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0, tags: ["failure"]}] } 
                 ]
             },
             friday: {
-                name: "Shoulders & Abs",
+                name: "Shoulders & Legs",
                 exercises: [
-                    { bodyPart: 'shoulders', name: 'Overhead Press', sets: [{reps: 10, weight: 40, tags: ['warmup']}, {reps: 8, weight: 50}, {reps: 8, weight: 55}, {reps: 6, weight: 60}] },
-                    { bodyPart: 'shoulders', name: 'Lateral Raise', sets: [{reps: 15, weight: 10}, {reps: 12, weight: 12.5}, {reps: 10, weight: 15}] },
-                    { bodyPart: 'shoulders', name: 'Front Raise', sets: [{reps: 12, weight: 10}, {reps: 12, weight: 12.5}, {reps: 15, weight: 10, tags: ['dropset']}] },
-                    { bodyPart: 'core', name: 'Plank', sets: [{reps: 60, weight: 0}, {reps: 60, weight: 0}, {reps: 90, weight: 0, tags: ['failure']}] }
-                ]
+                    { bodyPart: 'legs', name: 'Rumanian Dead Weight', sets: [{reps: 6, weight: 0, tags: ['warmup']}, {reps: 8, weight: 0}, {reps: 8, weight: 0}] },
+                    { bodyPart: 'legs', name: 'Leg Press', sets: [{reps: 10, weight: 0}, {reps: 12, weight: 0}, {reps: 12, weight: 0}] },
+                    { bodyPart: 'legs', name: 'Femoral Curl', sets: [{reps: 12, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}] },
+                    { bodyPart: 'legs', name: 'Cuadriceps Extension', sets: [{reps: 15, weight: 0}, {reps: 20, weight: 0}, {reps: 20, weight: 0}, {reps: 20, weight: 0, tags: ['dropset']}] },
+                    
+                    { bodyPart: 'shoulders', name: "Lateral raises with standing pulley", sets: [{reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}] },
+                    { bodyPart: 'shoulders', name: "Seated dumbbell lateral raises", sets: [{reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0}, {reps: 15, weight: 0, tags: ["failure"]}] },]
             },
             saturday: {
-                name: "Full Body",
+                name: "rest",
                 exercises: [
-                    { bodyPart: 'chest', name: 'Push-ups', sets: [{reps: 20, weight: 0}, {reps: 15, weight: 0}, {reps: 20, weight: 0, tags: ['failure']}] },
-                    { bodyPart: 'back', name: 'Barbell Row', sets: [{reps: 10, weight: 60}, {reps: 8, weight: 70}, {reps: 8, weight: 75}] },
-                    { bodyPart: 'legs', name: 'Lunges', sets: [{reps: 20, weight: 20}, {reps: 16, weight: 25}, {reps: 12, weight: 30}] },
-                    { bodyPart: 'core', name: 'Russian Twists', sets: [{reps: 30, weight: 10}, {reps: 30, weight: 12.5}, {reps: 40, weight: 10, tags: ['failure']}] }
+                    
                 ]
             },
             sunday: {
@@ -642,12 +655,15 @@
 
         let workoutData = [];
         let currentBodyPart = null;
-        let currentDay = 'monday';
+        
+        const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+        const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+        const date = new Date();
+        let currentDay = days[date.getDay() - 1];
 
         // Initialize day selector
         function initDaySelector() {
-            const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
-            const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
             const container = document.getElementById('daySelector');
             
             days.forEach((day, index) => {
@@ -913,6 +929,9 @@
         initDaySelector();
         initBodyParts();
         loadDayRoutine(currentDay);
+
+        // Select current date
+        
     </script>
 </body>
 </html>
